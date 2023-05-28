@@ -1,0 +1,61 @@
+/* Header and navbar Css */
+#header{
+    display: flex;
+    align-items: baseline;
+}
+
+/* Registration page css */
+#reg{
+    display: flex;
+    margin-top: 30px;
+    height: 500px;
+}
+#reg .row{
+    height: 100%;
+    align-items: center;
+}
+
+/* Login page css */
+#login{
+    display: flex;
+    height: 500px;
+    margin-top: 30px;
+}
+#login .row{
+    height: 100%;
+    align-items: center;
+}
+
+/* Hero sectio  */
+#hero img{
+    height: 550px;
+}
+
+#testi{
+    padding: 20px 0px;
+  }
+  #testi img{
+    width: 150px;
+    border-radius: 50%;
+    margin-bottom: 13px;
+  }
+  #product{
+    display: inline-block;
+  }
+  #products{
+    padding: 20px 0px;
+  }
+  #products img{
+    width: 250px;
+    border: 0px solid black;
+    margin-bottom: 13px;
+  }
+  #products h2{
+    font-weight: light;
+    text-transform: capitalize;
+    margin-bottom: 20px;
+  }
+  /* #userdashborad{
+    margin-bottom: 280px;
+  } */
+  /* POC */

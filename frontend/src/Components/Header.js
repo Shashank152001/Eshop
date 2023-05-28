@@ -1,0 +1,90 @@
+import { Link, useNavigate } from 'react-router-dom'
+import { LoginContext } from '../LoginContext'
+import { useContext } from 'react'
+// import UserHeader from './UserHeader'
+
+function Header() {
+    const { userLoginName, setuserLoginName, userLoginStatus, setuserLoginStatus,cart,setCart} = useContext(LoginContext)
+    
+    const navigate = useNavigate()
+    function handleLogout() {
+        setuserLoginName(localStorage.removeItem('userLoginName'))
+        setuserLoginStatus(localStorage.removeItem('userLoginStatus'))
+        setCart('')
+        
+        console.log('hello')
+        
+        navigate('/')
+    }
+    return (
+        
+        <>
+        
+        <section id='header'>
+            <div className="container-fluid bg-light">
+                <div className="row">
+                    <div className="col-md-12">
+                        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                            <div className="container-fluid">
+                                <Link className="navbar-brand" to="/">eShop</Link>
+                                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span className="navbar-toggler-icon"></span>
+                                </button>
+                                <div className="collapse navbar-collapse " id="navbarSupportedContent">
+                                    <ul className="navbar-nav me-auto mb-2 mb-lg-0 d-flex align-items-center">
+                                        {userLoginStatus?
+                                            <>
+                                            <li className="nav-item">
+                                                    <Link className="nav-link" aria-current="page" to="/aboutus">AboutUs</Link>
+                                                </li>
+                                                <li className="nav-item">
+                                                <Link className="nav-link" to="/services">Product</Link>
+                                            </li>
+                                                <li className="nav-item">
+                                                    <Link className="nav-link" aria-current="page" to="/userdashboard">Welcome {userLoginName}</Link>
+                                                </li>
+                                                <li className="nav-item">
+                                                    <Link className="nav-link" aria-current="page" to="/cart">Cart {cart.totalItems}</Link>
+                                                </li>
+                                                {/* <li className="nav-item">
+                                                    <Link className="nav-link" to="/login">Login</Link>
+                                                </li> */}
+                                                <li className="nav-item">
+                                                    <button onClick={handleLogout} className='btn btn-danger text-light nav-link'>Logout</button>
+                                                </li>
+                                            </>
+                                            :
+                                            <>
+                                            <li className="nav-item">
+                                                    <Link className="nav-link" aria-current="page" to="/aboutus">AboutUs</Link>
+                                                </li>
+                                                <li className="nav-item">
+                                                <Link className="nav-link" to="/services">Product</Link>
+                                            </li>
+                                            <li className="nav-item">
+                                                <Link className="nav-link" to="/reg">SignUp</Link>
+                                            </li>
+                                            </>
+                                        }
+                                    </ul>
+                                    <form className="d-flex">
+                                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                                        <button className="btn btn-outline-success" type="submit">Search</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+
+       </>
+       
+       
+       
+    );
+}
+
+export default Header;
